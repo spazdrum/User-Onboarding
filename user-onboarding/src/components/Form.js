@@ -12,7 +12,7 @@ export default function form() {
         terms: ""
     });
 
-    const [isBtnDis, set IsBtnDis] = useState(true);
+    const [isBtnDis, setIsBtnDis] = useState(true);
 
     const [errors, setErrors] = useState({
         name: "",
@@ -78,7 +78,7 @@ export default function form() {
             </label>
             <label htmlFor="password">password
                 <input id="password" type="password" name="password" onChange={inputChange} value={formState.password} />
-                {errors.name.length > 0 ? <p className="error">{errors.password}</p>}
+                {errors.name.length > 0 ? <p className="error">{errors.password}</p> : null}
             </label>
             <label htmlFor="terms" className="terms">
                 <input type="checkbox" name="terms" checked={formState.terms} onChange={inputChange} />
