@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 
 export default function form() {
-    const [post, setPost] = useState([])
+    const [post, setPost] = useState([]);
     // manage formState
     const [formState, setFormState] = useState({
         name: "",
