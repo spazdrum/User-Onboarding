@@ -68,13 +68,17 @@ export default function form() {
 
     return (
         <form onSubmit={formSubmit}>
-            <label htmlFor="name"> name
-                <input id="name" type="text" name="name" onchange={inputChange} value={formState.name} />
+            <label htmlFor="name">name
+                <input id="name" type="text" name="name" placeholder="Please enter full name" onchange={inputChange} value={formState.name} />
                 {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
             </label>
             <label htmlFor="email">email
-                <input type="text" name="email" onChange={inputChange} value={formState.email} />
+                <input type="text" name="email" placeholder="Enter email" onChange={inputChange} value={formState.email} />
                 {errors.name.length > 0 ? (<p className="error">{errors.email}</p>) : null}
+            </label>
+            <label htmlFor="password">password
+                <input id="password" type="password" name="password" onChange={inputChange} value={formState.password} />
+                {errors.name.length > 0 ? <p className="error">{errors.password}</p>}
             </label>
             <label htmlFor="terms" className="terms">
                 <input type="checkbox" name="terms" checked={formState.terms} onChange={inputChange} />
