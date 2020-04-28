@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
-export default function form() {
+function Form() {
     const [post, setPost] = useState([]);
     // manage formState
     const [formState, setFormState] = useState({
@@ -91,3 +91,5 @@ export default function form() {
         </form>
     );
 }
+
+export default Form;
