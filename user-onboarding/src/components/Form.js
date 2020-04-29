@@ -68,15 +68,15 @@ function Form() {
 
     return (
         <form onSubmit={formSubmit}>
-            <label htmlFor="name">name
+            <label htmlFor="name">Name
                 <input id="name" type="text" name="name" placeholder="Please enter full name" onchange={inputChange} value={formState.name} />
                 {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
             </label>
-            <label htmlFor="email">email
+            <label htmlFor="email">Email
                 <input type="text" name="email" placeholder="Enter email" onChange={inputChange} value={formState.email} />
                 {errors.name.length > 0 ? (<p className="error">{errors.email}</p>) : null}
             </label>
-            <label htmlFor="password">password
+            <label htmlFor="password">Password
                 <input id="password" type="password" name="password" onChange={inputChange} value={formState.password} />
                 {errors.name.length > 0 ? <p className="error">{errors.password}</p> : null}
             </label>
@@ -84,7 +84,7 @@ function Form() {
                 <input type="checkbox" name="terms" checked={formState.terms} onChange={inputChange} />
                 Terms & Conditions
             </label>
-            <pre>{JSON.stringify(post, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
             <button disabled={isBtnDis} type="submit">
                 Submit
             </button>
