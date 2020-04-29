@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
@@ -11,8 +11,6 @@ function Form() {
         password: "",
         terms: ""
     });
-
-    const [isBtnDis, setIsBtnDis] = useState(true);
 
     const [errors, setErrors] = useState({
         name: "",
@@ -35,24 +33,21 @@ function Form() {
         .catch(err => setErrors({ ...errors, [e.target.name]: err.errors[0] }));
     };
 
-    useEffect(() => {
-        formSchema.isValid(formState).then(valid => {
-            setIsBtnDis(!valid);
-        });
-    }, [formState]);
-
     // onSubmit
     const formSubmit = e => {
         e.preventDefault();
-        axios.post("https://reqres.in/api/users", formState).then(response => {
-            setPost(response.data);
-            setFormState({
-                name: "",
-                email: "",
-                password: "",
-                terms: ""
-            });
-        }).catch(err => console.log(err.response));
+        axios
+            .post("https://reqres.in/api/users", formState)
+            .then(response => {
+                setPost(response.data);
+                setFormState({
+                    name: "",
+                    email: "",
+                    password: "",
+                    terms: ""
+                });
+            })
+            .catch(err => console.log(err.response));
     };
 
     // onChange
@@ -69,11 +64,11 @@ function Form() {
     return (
         <form onSubmit={formSubmit}>
             <label htmlFor="name">Name
-                <input id="name" type="text" name="name" placeholder="Please enter full name" onchange={inputChange} value={formState.name} />
+                <input type="text" name="name" placeholder="Please enter full name" onchange={inputChange} value={formState.name} />
                 {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
             </label>
             <label htmlFor="email">Email
-                <input type="text" name="email" placeholder="Enter email" onChange={inputChange} value={formState.email} />
+                <input type="email" name="email" placeholder="Enter email" onChange={inputChange} value={formState.email} />
                 {errors.name.length > 0 ? (<p className="error">{errors.email}</p>) : null}
             </label>
             <label htmlFor="password">Password
@@ -85,7 +80,7 @@ function Form() {
                 Terms & Conditions
             </label>
             {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-            <button disabled={isBtnDis} type="submit">
+            <button type="submit">
                 Submit
             </button>
         </form>
