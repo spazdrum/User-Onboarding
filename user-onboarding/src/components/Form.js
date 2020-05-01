@@ -102,6 +102,7 @@ function Form() {
                 name="password" 
                 onChange={inputChange} 
                 value={formState.password} 
+                data-cy="password"
                 />
                 {errors.name.length > 0 ? <p className="error">{errors.password}</p> : null}
             </label>

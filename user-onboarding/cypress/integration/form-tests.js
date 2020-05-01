@@ -5,12 +5,16 @@ describe("test our form inputs", function () {
 
     it("add text to inputs", function() {
         cy.get('[data-cy="name"]')
-        .type("Josh")
-        .should("have.value", "Josh");
+        .type("Josh Schmidt")
+        .should("have.value", "Josh Schmidt");
 
         cy.get('[data-cy="email"]')
         .type("email@email.com")
         .should("have.value", "email@email.com");
+
+        cy.get('[data-cy="password"]')
+        .type("abcdefgh")
+        .should("have.value", "abcdefgh");
 
         cy.get('[type="checkbox"]')
         .check()
