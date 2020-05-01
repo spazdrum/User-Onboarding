@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
@@ -11,6 +11,8 @@ function Form() {
         password: "",
         terms: ""
     });
+
+    const [isBtnDis, setIsBtnDis] = useState(true);
 
     const [errors, setErrors] = useState({
         name: "",
@@ -32,6 +34,12 @@ function Form() {
         })
         .catch(err => setErrors({ ...errors, [e.target.name]: err.errors[0] }));
     };
+
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+            setIsBtnDis(!valid);
+        })
+    }, [formState]);
 
     // onSubmit
     const formSubmit = e => {
@@ -64,7 +72,7 @@ function Form() {
     return (
         <form onSubmit={formSubmit}>
             <label htmlFor="name">Name
-                <input type="text" name="name" placeholder="Please enter full name" onchange={inputChange} value={formState.name} />
+                <input type="text" name="name" placeholder="Please enter full name" onChange={inputChange} value={formState.name} />
                 {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
             </label>
             <label htmlFor="email">Email
@@ -80,7 +88,7 @@ function Form() {
                 Terms & Conditions
             </label>
             {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-            <button type="submit">
+            <button disabled={isBtnDis} type="submit">
                 Submit
             </button>
         </form>
