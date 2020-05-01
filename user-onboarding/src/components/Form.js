@@ -72,22 +72,52 @@ function Form() {
     return (
         <form onSubmit={formSubmit}>
             <label htmlFor="name">Name
-                <input type="text" name="name" placeholder="Please enter full name" onChange={inputChange} value={formState.name} />
+                <input 
+                type="text" 
+                name="name" 
+                placeholder="Please enter full name" 
+                onChange={inputChange} 
+                value={formState.name} 
+                data-cy="name" 
+                />
                 {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
             </label>
+            
             <label htmlFor="email">Email
-                <input type="email" name="email" placeholder="Enter email" onChange={inputChange} value={formState.email} />
+                <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter email" 
+                onChange={inputChange} 
+                value={formState.email}
+                data-cy="email"
+                />
                 {errors.name.length > 0 ? (<p className="error">{errors.email}</p>) : null}
             </label>
+            
             <label htmlFor="password">Password
-                <input id="password" type="password" name="password" onChange={inputChange} value={formState.password} />
+                <input 
+                id="password" 
+                type="password" 
+                name="password" 
+                onChange={inputChange} 
+                value={formState.password} 
+                />
                 {errors.name.length > 0 ? <p className="error">{errors.password}</p> : null}
             </label>
+            
             <label htmlFor="terms" className="terms">
-                <input type="checkbox" name="terms" checked={formState.terms} onChange={inputChange} />
+                <input 
+                type="checkbox" 
+                name="terms" 
+                checked={formState.terms} 
+                onChange={inputChange} 
+                />
                 Terms & Conditions
             </label>
+            
             {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+            
             <button disabled={isBtnDis} type="submit">
                 Submit
             </button>
