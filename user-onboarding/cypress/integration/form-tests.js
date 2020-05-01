@@ -3,7 +3,7 @@ describe("test our form inputs", function () {
         cy.visit("http://localhost:3000/")
     });
 
-    it("add text to inputs", function() {
+    it("Test 1", function() {
         cy.get('[data-cy="name"]')
         .type("Josh Schmidt")
         .should("have.value", "Josh Schmidt");
@@ -23,4 +23,4 @@ describe("test our form inputs", function () {
         cy.contains('Submit')
         .click();
     })
-})
+});
